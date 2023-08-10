@@ -9,7 +9,7 @@
         <!-- As you can see, we will use vite with jsx syntax for React-->
         @inertiaHead
     </head>
-    <body>
+    <body class="antialiased text-gray-700 bg-gray-100">
         @inertia
     </body>
 </html>

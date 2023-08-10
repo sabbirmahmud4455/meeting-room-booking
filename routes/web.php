@@ -1,7 +1,9 @@
 <?php
 
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return Inertia::render('Test'); // This will get component Test.jsx from the resources/js/Pages/Test.jsx
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::Post('/login', [LoginController::class, 'login']);
+Route::get('/register', [RegisterController::class, 'showRegisterForm']);
+Route::Post('/register', [RegisterController::class, 'register']);
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout']);
+
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
 });

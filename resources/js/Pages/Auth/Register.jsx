@@ -13,11 +13,6 @@ const Login = () => {
         password_confirmation: '',
     });
 
-    //log data where data is updated every time
-    // useEffect(() => {
-    //     console.log(data);
-    // }, [data]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         post('/register');

@@ -2,8 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Inertia\Middleware;
+use Illuminate\Http\Request;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -37,7 +38,20 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            //
+            //share app name
+            'appName' => config('app.name'),
+
+            //share laravel flash messages
+            'flash' => [
+                'successMessage' => fn () => $request->session()->get('success_message'),
+                'errorMessage' => fn () => $request->session()->get('error_message'),
+                'message' => fn () => $request->session()->get('message'),
+            ],
+
+            //share auth user
+            'auth.user' => fn () => $request->user()
+                ? $request->user()->only('id', 'name', 'email')
+                : null,
         ]);
     }
 }

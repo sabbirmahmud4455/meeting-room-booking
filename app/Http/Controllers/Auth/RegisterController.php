@@ -20,7 +20,7 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name'      => 'required|max:50',
-            'email'     => 'required|email|max:100',
+            'email'     => 'required|email|max:100|unique:users',
             'password'  => 'required|min:6|max:100|confirmed'
         ]);
 
@@ -32,7 +32,7 @@ class RegisterController extends Controller
 
         if (Auth::attempt($request->only('email','password'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/home');
+            return redirect()->intended('/');
         }
     }
 }

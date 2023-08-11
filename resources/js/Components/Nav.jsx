@@ -1,7 +1,8 @@
 import React from 'react';
 import NavLink from './NavLink';
 
-const Nav = ({authUser}) => {
+const Nav = ({auth}) => {
+
     return (
         <nav className="border-b border-gray-100 shadow-sm flex justify-center">
             <div className="container h-20 space-x-4 flex justify-between items-center">
@@ -17,8 +18,7 @@ const Nav = ({authUser}) => {
                 {/* Navigation Links */}
                 <div className="h-full ml-10 space-x-8 sm:-my-px flex items-center">
 
-
-                    {!authUser ?
+                    {!auth || !auth.user ?
                         <>
                             <NavLink
                             href="/login"
@@ -32,13 +32,18 @@ const Nav = ({authUser}) => {
                                 Register
                             </NavLink>
                         </>
-
                     :
                         <>
                             <NavLink
                             href="/"
                             >
                                 Home
+                            </NavLink>
+
+                            <NavLink
+                            href="/my-meetings"
+                            >
+                                My Meeting
                             </NavLink>
 
                             <NavLink

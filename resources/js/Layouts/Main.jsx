@@ -1,11 +1,11 @@
 import React from 'react';
 import Nav from '../Components/Nav';
 
-const Main = ({ authUser, children }) => {
+const Main = ({ auth, children }) => {
     return (
         <div>
             <Nav
-            authUser={authUser}
+            auth={auth}
             />
             { children }
         </div>

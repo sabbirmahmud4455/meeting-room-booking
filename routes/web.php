@@ -18,14 +18,17 @@ use App\Http\Controllers\Auth\RegisterController;
 
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::Post('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegisterForm']);
-Route::Post('/register', [RegisterController::class, 'register']);
+Route::post('/register', [RegisterController::class, 'register']);
 
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout']);
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/my-meetings', [HomeController::class, 'my_meetings']);
+    Route::get('/create-meetings', [HomeController::class, 'create_meetings']);
+    Route::post('/store-meeting', [HomeController::class, 'store_meetings']);
 
 });

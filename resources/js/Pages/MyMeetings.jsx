@@ -25,17 +25,19 @@ const MyMeetings = ({auth, myMeetings }) => {
                     <div className=' col-span-1 card'>
                         <h3 className=' text-xl font-bold text-center my-2'>Meetings</h3>
                         <ul>
-                            {myMeetings.length > 0  ?
+                            {myMeetings.length > 0
+
+                            ?
                                 myMeetings.map((meeting) => (
-                                <li
-                                key={meeting.id}
-                                onClick={() => handleTabClick(meeting.id)}
-                                className={`${meeting.id === activeTab ? 'bg-slate-500 text-white' : 'bg-slate-200 hover:bg-slate-300' }  rounded-lg p-2 border-b border-b-gray-300 last:border-b-0 my-1 cursor-pointer `}
-                                >{meeting.name}</li>
-                            ))
-                                :
+                                    <li
+                                    key={meeting.id}
+                                    onClick={() => handleTabClick(meeting.id)}
+                                    className={`${meeting.id === activeTab ? 'bg-slate-500 text-white' : 'bg-slate-200 hover:bg-slate-300' }  rounded-lg p-2 border-b border-b-gray-300 last:border-b-0 my-1 cursor-pointer `}
+                                    >{meeting.name}</li>
+                                ))
+                            :
                                 <li className=' p-2  my-1 '>No Meetings</li>
-                        }
+                            }
                         </ul>
                     </div>
 

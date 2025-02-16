@@ -31,4 +31,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create-meetings', [HomeController::class, 'create_meetings']);
     Route::post('/store-meeting', [HomeController::class, 'store_meetings']);
 
+    
+
 });
